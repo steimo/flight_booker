@@ -1,0 +1,12 @@
+---
+EnableDefaultLinters: true
+linters:
+  SpaceAroundErbTag:
+    enabled: true
+  ErbSafety:
+    enabled: false
+  Rubocop:
+    enabled: false
+    rubocop_config:
+      inherit_from:
+        - .rubocop.yml
