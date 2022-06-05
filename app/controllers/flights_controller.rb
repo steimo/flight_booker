@@ -3,9 +3,12 @@ class FlightsController < ApplicationController
 
   # GET /flights or /flights.json
   def index
-    @flights = Flight.all
-    @airports = Airport.all.map { |a| [a.code, a.id, :class => ''] }
+    @flights = Flight.all.order('start_time ASC')
+    @airports = Airport.all.map { |a| [a.code, a.id, { class: '' }] }
     @date_options = @flights.map { |f| [f.start_time.strftime('%d %^b %Y'), f.start_time] }.uniq
+    @available_flights = Flight.where(departure_airport_id: params[:departure_airport_id],
+                                      arrival_airport_id: params[:arrival_airport_id],
+                                      start_time: params[:start_time])
   end
 
   # GET /flights/1 or /flights/1.json
@@ -66,6 +69,6 @@ class FlightsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def flight_params
-    params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :start_time, :duration)
+    params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :start_time, :duration, :passengers)
   end
 end

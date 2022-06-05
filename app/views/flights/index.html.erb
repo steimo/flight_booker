@@ -2,14 +2,25 @@
   <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
 <% end %>
 <div class="flex h-screen">
-  <div class="my-4 md:w-full max-w-xl mx-auto xl:w-3/4 sm:w-auto">
+  <div class="my-4 md:w-full max-w-xl mx-auto xl:w-3/4 sm:w-full w-9/12">
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden m-8">
       <%= render "form", flights: @flights %>
-      <!-- <h1 class="font-bold text-4xl">Flights</h1> -->
-      <!-- <%= link_to 'New flight', new_flight_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %> -->
     </div>
+    <% if params.has_value?('Search') %>
+      <svg class="arrows">
+        <path class="a1" d="M0 0 L30 32 L60 0"></path>
+        <path class="a2" d="M0 20 L30 52 L60 20"></path>
+        <path class="a3" d="M0 40 L30 72 L60 40"></path>
+      </svg>
+    <% end %>
     <div id="flights" class="min-w-full">
-      <!-- <%= render @flights %> -->
+      <% if @available_flights.empty? && params.has_value?('Search') %>
+        <h1>No available flights</h1>
+      <% else %>
+      <% @available_flights.each do |flight| %>
+        <%= render flight %>
+      <% end %>
+    <% end %>
     </div>
   </div>
 </div>

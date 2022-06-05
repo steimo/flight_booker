@@ -7,8 +7,18 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Airport.delete_all
-a1 = Airport.create(code: 'NYC')
-a2 = Airport.create(code: 'KOJ')
+Flight.delete_all
+airports = []
+5.times do
+  airports << Airport.create({ code: ('A'..'Z').to_a.sample(3).join })
+end
 
-Flight.create(departure_airport: a1, arrival_airport: a2, start_time: DateTime.now,
-              duration: '12:00')
+200.times do
+  p Flight.create(departure_airport: airports.sample, arrival_airport: airports.sample,
+    start_time: Faker::Date.between(from: '01-01-2022', to: '02-01-2022'), duration: "#{rand(2..12)}:00", price: rand(200..900))
+end
+  
+Flight.create(departure_airport: airports[0], arrival_airport: airports[1],
+  start_time: '05-05-2022', duration: "12:00")
+
+p "Created #{Flight.count} flights"
