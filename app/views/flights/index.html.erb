@@ -1,15 +1,16 @@
-<div class="w-full">
   <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
-  <div class="flex justify-between items-center">
-    <%= render "form", flights: @flights %>
-    <!-- <h1 class="font-bold text-4xl">Flights</h1> -->
-    <!-- <%= link_to 'New flight', new_flight_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %> -->
+  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+<% end %>
+<div class="flex h-screen">
+  <div class="m-auto md:w-full max-w-xl mx-auto xl:w-3/4 sm:w-auto">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden m-8">
+      <%= render "form", flights: @flights %>
+      <!-- <h1 class="font-bold text-4xl">Flights</h1> -->
+      <!-- <%= link_to 'New flight', new_flight_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %> -->
+    </div>
+    <div id="flights" class="min-w-full">
+      <!-- <%= render @flights %> -->
+    </div>
   </div>
-
-  <div id="flights" class="min-w-full">
-    <!-- <%= render @flights %> -->
-  </div>
+</div>
 </div>

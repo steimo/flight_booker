@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background: url("world_map.svg") no-repeat center center fixed;
+  background-size: contain;
+  background-color: #F0F2F2;
+  font-family: -apple-system, sans-serif;
+}
+
+@media (orientation: portrait) {
+  body {
+    background-size: auto 100vh;
+    background-position: center;
+  }
+}
+
+nav a{
+   text-decoration: none;
+ }
+

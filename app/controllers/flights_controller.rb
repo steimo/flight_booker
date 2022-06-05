@@ -4,7 +4,7 @@ class FlightsController < ApplicationController
   # GET /flights or /flights.json
   def index
     @flights = Flight.all
-    @airports = Airport.all.map { |a| [a.code, a.id] }
+    @airports = Airport.all.map { |a| [a.code, a.id, :class => ''] }
     @date_options = @flights.map { |f| [f.start_time.strftime('%d %^b %Y'), f.start_time] }.uniq
   end
 
