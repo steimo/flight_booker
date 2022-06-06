@@ -13,12 +13,14 @@
         <path class="a3" d="M0 40 L30 72 L60 40"></path>
       </svg>
     <% end %>
-    <div id="flights" class="min-w-full">
+    <div id="flights" class="">
       <% if @available_flights.empty? && params.has_value?('Search') %>
-        <h1>No available flights</h1>
+        <h1 class="text-center font-bold">No available flights</h1>
       <% else %>
       <% @available_flights.each do |flight| %>
+          <%= link_to root_path do %>
         <%= render flight %>
+      <% end %>
       <% end %>
     <% end %>
     </div>
