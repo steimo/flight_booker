@@ -90,6 +90,7 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
+    iso_country_codes (0.7.8)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -216,6 +217,7 @@ DEPENDENCIES
   debug
   faker
   importmap-rails
+  iso_country_codes
   jbuilder
   puma (~> 5.0)
   rails (~> 7.0.3)

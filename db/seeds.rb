@@ -10,15 +10,14 @@ Airport.delete_all
 Flight.delete_all
 airports = []
 5.times do
-  airports << Airport.create({ code: ('A'..'Z').to_a.sample(3).join })
+  airports << Airport.create({ code: Faker::Address.country_code_long })
 end
 
-200.times do
-  p Flight.create(departure_airport: airports.sample, arrival_airport: airports.sample,
-    start_time: Faker::Date.between(from: '01-01-2022', to: '02-01-2022'), duration: "#{rand(2..12)}:00", price: rand(200..900))
+
+500.times do
+   Flight.create(departure_airport: airports.sample, arrival_airport: airports.sample,
+    start_time: Faker::Date.between(from: '01-01-2022', to: '05-01-2022') , duration: "#{rand(2..12)}:00", price: rand(500..900))
 end
   
-Flight.create(departure_airport: airports[0], arrival_airport: airports[1],
-  start_time: '05-05-2022', duration: "12:00")
 
 p "Created #{Flight.count} flights"
