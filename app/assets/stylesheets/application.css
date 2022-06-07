@@ -93,3 +93,7 @@ nav a {
   animation-delay: 0s;
   -webkit-animation-delay: 0s; /* Safari 和 Chrome */
 }
+
+#flight-card {
+  background-color: #BDD9F2
+}

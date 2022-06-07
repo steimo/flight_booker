@@ -13,11 +13,12 @@ airports = []
   airports << Airport.create({ code: Faker::Address.country_code_long })
 end
 
-date1 = "#{Time.now.day}-#{Time.now.month}-#{Time.now.year}"
-date2 = "#{Time.now.day + 5}-#{Time.now.month}-#{Time.now.year}"
-500.times do
+700.times do
+  dt = DateTime.new(Time.now.year, Time.now.month, Time.now.day + rand(0..5),
+                    Faker::Time.between(from: DateTime.now - 1, to: DateTime.now).hour, Faker::Time.between(from: DateTime.now - 1, to: DateTime.now).min)
+  duration = "#{rand(2..12)}:00"
   Flight.create(departure_airport: airports.sample, arrival_airport: airports.sample,
-                start_time: Faker::Date.between(from: date1, to: date2), duration: "#{rand(2..12)}:00", price: rand(500..900))
+                start_time: dt, duration: duration, price: rand(500..900))
 end
 
 p "Created #{Flight.count} flights"

@@ -5,10 +5,15 @@ class FlightsController < ApplicationController
   def index
     @flights = Flight.all.order('start_time ASC')
     @airports = Airport.all.map { |a| [a.code, a.id, { class: '' }] }
-    @date_options = @flights.map { |f| [f.start_time.strftime('%d %^b %Y'), f.start_time] }.uniq
+    @date_options = @flights.map do |f|
+      [f.start_time.strftime('%d %^b %Y'), (f.start_time.all_day unless f.start_time.nil?)]
+    end.uniq
+    @date = Date.parse(params[:start_time]) unless params[:start_time].nil?
     @available_flights = Flight.where(departure_airport_id: params[:departure_airport_id],
                                       arrival_airport_id: params[:arrival_airport_id],
-                                      start_time: params[:start_time]).where('departure_airport_id != arrival_airport_id')
+                                      start_time: (unless @date.nil?
+                                                     @date.all_day
+                                                   end)).where('departure_airport_id != arrival_airport_id')
     if params[:departure_airport_id] == params[:arrival_airport_id] && params.has_value?('Search')
       flash.now[:alert] = 'Please choose two different origin and destination locations!'
       render :index

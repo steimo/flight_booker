@@ -18,7 +18,7 @@
         <h1 class="text-center font-bold">No available flights</h1>
       <% else %>
       <% @available_flights.each do |flight| %>
-          <%= link_to root_path do %>
+        <%= link_to new_booking_path(:flight_id => flight.id, :passengers => params[:passengers]) do %>
         <%= render flight %>
       <% end %>
       <% end %>
