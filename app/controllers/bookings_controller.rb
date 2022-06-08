@@ -11,8 +11,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        # PassengerMailer.with(booking: @booking).confirmation_email.deliver
-        format.html { redirect_to booking_url(@booking), notice: 'Booking was successfully created.' }
+        format.html { redirect_to booking_path(@booking), notice: 'Booking successfully completed!' }
         format.json { render :show, status: :created, location: @booking }
       else
         @flight = Flight.where(id: @booking.flight_id)
@@ -23,6 +22,11 @@ class BookingsController < ApplicationController
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+    @passengers = @booking.passengers.size
   end
 
   private
