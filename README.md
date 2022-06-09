@@ -1,24 +1,31 @@
-# README
+<h1 style="margin-top: 0px;">FlightBooker</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<p>This project involves building of a typical checkout process for booking a one-way flight (a flight that is booked from a passenger’s departure airport to their intended destination airport with no scheduled return trip).</p>
 
-Things you may want to cover:
+### Overview:
 
-* Ruby version
+The application focuses on getting more comfortable with Active Record and more advanced rails forms (such as pre-populating data from multiple models through select helpers and usage of nested attributes). Users find flights based on - departure airport, arrival airport and departure date. Once search results are returned, the user just needs to choose from among the available flights. Once the user has submitted their chosen flight, it's time to enter passenger information to finalize their booking. For the purposes of this project, it is not necessary signing up or logging in to use the app.
 
-* System dependencies
+### Demo:
 
-* Configuration
+You can try it out [here](https://enigmatic-refuge-15880.herokuapp.com/).
 
-* Database creation
+### Gems used:
 
-* Database initialization
+- [Tailwindcss](https://tailwindcss.com/) - CSS framework.
 
-* How to run the test suite
+- [Faker](https://github.com/faker-ruby/faker) - generates fake data.
 
-* Services (job queues, cache servers, search engines, etc.)
+- [iso_country_codes](https://github.com/alexrabarts/iso_country_codes) - provides ISO codes, names and currencies for countries.
 
-* Deployment instructions
+### Database schema:
 
-* ...
+![db schema](schema_example/database_schema.png)
+
+### Contact me:
+
+vladyslav.kolomiets@protonmail.com
+
+### Contributing:
+
+Pull requests are welcome.
