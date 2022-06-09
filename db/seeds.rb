@@ -8,12 +8,18 @@
 
 Airport.delete_all
 Flight.delete_all
-airports = []
-5.times do
-  airports << Airport.create({ code: Faker::Address.country_code_long })
+
+country_codes = []
+20.times do
+  country_codes << Faker::Address.country_code_long
 end
 
-700.times do
+airports = []
+5.times do
+  airports << Airport.create({ code: country_codes.uniq.sample })
+end
+
+500.times do
   dt = DateTime.new(Time.now.year, Time.now.month, Time.now.day + rand(0..5),
                     Faker::Time.between(from: DateTime.now - 1, to: DateTime.now).hour, Faker::Time.between(from: DateTime.now - 1, to: DateTime.now).min)
   duration = "#{rand(2..12)}:00"

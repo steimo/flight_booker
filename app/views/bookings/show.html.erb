@@ -6,11 +6,15 @@
     <% @booking.passengers.each_with_index do |passenger, i| %>
       <ul role="list" class="divide-y divide-gray-200">
         <li class="py-3 sm:py-4">
-          <div class="flex items-center justify-between space-x-4">
+          <div class="flex items-center justify-around text-gray-400 font-medium">
+            <span>Name</span>
+            <span>Email</span>
+          </div>
+          <div class="flex items-center justify-around pt-4">
             <p class="font-medium text-gray-900 truncate">
               <%= passenger.name %>
             </p>
-            <p class="text-gray-500 truncate text-gray-400">
+            <p class="text-gray-900 truncate">
               <%= passenger.email %>
             </p>
           </div>
