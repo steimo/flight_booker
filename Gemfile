@@ -7,7 +7,9 @@ ruby '3.0.4'
 gem 'rails', '~> 7.0.3'
 
 gem 'iso_country_codes'
+gem 'letter_opener', group: :development
 gem 'rdoc'
+gem 'pry-byebug'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
