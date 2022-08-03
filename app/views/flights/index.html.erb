@@ -1,10 +1,10 @@
-  <% if notice.present? %>
+<% if notice.present? %>
   <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
 <% end %>
 <div class="flex h-screen">
   <div class="my-4 md:w-full max-w-xl mx-auto xl:w-3/4 sm:w-full w-9/12">
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden m-8">
-      <%= render "form", flights: @flights %>
+      <%= render "form" %>
     </div>
     <% if params.has_value?('Search') %>
       <svg class="arrows">
@@ -14,15 +14,15 @@
       </svg>
     <% end %>
     <div id="flights" class="">
-      <% if @available_flights.empty? && params.has_value?('Search') %>
+      <% if @flight_presenter.available_flights.empty? && params.has_value?('Search') %>
         <h1 class="text-center font-bold">No available flights</h1>
       <% else %>
-      <% @available_flights.each do |flight| %>
-        <%= link_to new_booking_path(:flight_id => flight.id, :passengers => params[:passengers]) do %>
-        <%= render flight %>
+        <% @flight_presenter.available_flights.each do |flight| %>
+          <%= link_to new_booking_path(:flight_id => flight.id, :passengers => params[:passengers]) do %>
+            <%= render flight %>
+          <% end %>
+        <% end %>
       <% end %>
-      <% end %>
-    <% end %>
     </div>
   </div>
 </div>
