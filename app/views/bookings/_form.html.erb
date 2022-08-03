@@ -1,13 +1,13 @@
-  <% if @booking.errors.any? %>
-    <div class="text-center bg-white rounded-xl p-2">
-      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
-      <ul>
-        <% @booking.errors.each do |error| %>
-          <li class='text-red-400'><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% if @booking.errors.any? %>
+  <div class="text-center bg-white rounded-xl p-2">
+    <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+    <ul>
+      <% @booking.errors.each do |error| %>
+        <li class='text-red-400'><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_with(model: @booking) do |form| %>
   <div>
     <%= form.hidden_field :flight_id %>
@@ -17,7 +17,7 @@
   <div class="flex flex-col  justify-center w-auto px-16">
     <% @passengers.to_i.times do |i| %>
       <div class="p-2 mx-auto md:w-full w-full">
-        <%= form.fields_for :passengers do | pass_form | %>
+        <%= form.fields_for :passengers do |pass_form| %>
           <input type="hidden" name="remember" value="true">
           <div class="rounded-md shadow-sm -space-y-px">
             <p class="text-center font-bold">Passenger <%= i + 1 %></p>
@@ -28,11 +28,11 @@
             <div>
               <%= pass_form.label :email, 'Email', class: "sr-only" %>
               <%= pass_form.text_field :email, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-400 focus:border-blue-400 focus:z-10 sm:text-sm", placeholder: "Email address" %>
-            <% end %>
-          </div>
+        <% end %>
+        </div>
         </div>
       </div>
     <% end %>
     <%= form.submit 'Submit', class: "rounded-lg py-3 my-4 bg-blue-500 text-white font-medium cursor-pointer" %>
-  <% end %>
+<% end %>
 </div>

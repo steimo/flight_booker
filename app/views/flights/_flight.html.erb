@@ -10,7 +10,7 @@
     <div class="flex sm:flex-row sm:justify-between flex-wrap ">
       <div class="flex flex-row place-items-center p-2">
         <div class="flex flex-col ml-2">
-          <% code = IsoCountryCodes.find("#{flight.departure_airport.code}") %>
+          <% code = IsoCountryCodes.find(t('code', code: flight.departure_airport.code)) %>
           <p class="text-xs text-gray-500 font-bold"><%= code.name %> Airways</p>
           <p class="text-xs text-gray-500"><%= code.alpha3 + flight.id.to_s %></p>
           <div class="text-xs text-gray-500"><%= @passengers %>*23kg</div>
@@ -28,22 +28,22 @@
         <p class="text-gray-500">Duration</p>
         <span class="font-bold"><%= flight.duration %></span>
       </div>
-      <% if (params[:controller] != 'flights') %>
-      <div class="flex flex-col flex-wrap p-2">
-        <p class="text-gray-500">Passengers</p>
-        <span class="font-bold"><%= @passengers %></span>
-      </div>
-    <% end %>
+      <% if params[:controller] != 'flights' %>
+        <div class="flex flex-col flex-wrap p-2">
+          <p class="text-gray-500">Passengers</p>
+          <span class="font-bold"><%= @passengers %></span>
+        </div>
+      <% end %>
       <div class="flex flex-col flex-wrap p-2">
         <p class="text-gray-500">Price</p>
         <span class="font-bold">$<%= flight.price %></span>
       </div>
-      <% if (params[:controller] != 'flights') %>
-      <div class="flex flex-col flex-wrap p-2">
-        <p class="text-gray-500">Total price</p>
-        <span class="font-bold">$<%= flight.price * @passengers.to_i %></span>
-      </div>
-    <% end %>
+      <% if params[:controller] != 'flights' %>
+        <div class="flex flex-col flex-wrap p-2">
+          <p class="text-gray-500">Total price</p>
+          <span class="font-bold">$<%= flight.price * @passengers.to_i %></span>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
