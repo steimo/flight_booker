@@ -22,9 +22,6 @@ You can try it out [here](https://enigmatic-refuge-15880.herokuapp.com/).
 
 ![db schema](schema_example/database_schema.png)
 
-### Contact me:
-
-vladyslav.kolomiets@protonmail.com
 
 ### Contributing:
 
